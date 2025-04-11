@@ -2,7 +2,7 @@ ARTHUR DAMIÃO 2401778
 BEATRIZ ALMEIDA 2400276
 SOPHIA DUARTE 2400480
 
-
+1 - Entender o código 
 CÓDIGO:
 public class RangeLister {
     // funcao para fazer o intervalo
@@ -30,6 +30,7 @@ public class RangeLister {
     }
 }
 
+2 - Fazer o algoritmo (Conforme o modelo especificado) 
 ALGORITMO:
     Algoritmo makeRange(lower, upper):
     range <- novo vetor de inteiros com tamanho (upper - lower + 1)
@@ -51,3 +52,6 @@ Algoritmo main():
         escreva(range[i] + " ")
     
     escreva("]")
+
+3 - Qual é o tipo de algoritmo?
+Gerador de intervalos
