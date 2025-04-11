@@ -1,0 +1,28 @@
+CÓDIGO:
+public class RangeLister {
+    // funcao para fazer o intervalo
+    int[] makeRange(int lower, int upper) {
+        // recebe o menor valor do intervalo e o maior
+        int[] range = new int[upper - lower + 1];
+
+        for (int i = 0; i < range.length; i++) {
+            range[i] = lower++;
+        }
+
+        return range;
+    }
+
+    public static void main(String[] arguments) {
+        int[] range; // intervalo
+        RangeLister lister = new RangeLister(); // cria uma lista
+
+        range = lister.makeRange(1, 10); // parecido com o range do python
+        System.out.print("The array: [ ");
+        for (int i = 0; i < range.length; i++) { // imprime os elementos
+            System.out.print(range[i] + " ");
+        }
+        System.out.println("]");
+    }
+}
+
+ALGORITMO:
