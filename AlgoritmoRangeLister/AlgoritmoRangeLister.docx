@@ -1,3 +1,8 @@
+ARTHUR DAMIÃO 2401778
+BEATRIZ ALMEIDA 2400276
+SOPHIA DUARTE 2400480
+
+
 CÓDIGO:
 public class RangeLister {
     // funcao para fazer o intervalo
@@ -26,3 +31,23 @@ public class RangeLister {
 }
 
 ALGORITMO:
+    Algoritmo makeRange(lower, upper):
+    range <- novo vetor de inteiros com tamanho (upper - lower + 1)
+    
+    para i de 0 até tamanho(range) - 1 faça:
+        range[i] <- lower
+        lower <- lower + 1
+    
+    retorna range
+
+Algoritmo main():
+    range <- vetor de inteiros
+    lister <- novo RangeLister()
+    
+    range <- lister.makeRange(1, 10)
+    escreva("The array: [ ")
+    
+    para i de 0 até tamanho(range) - 1 faça:
+        escreva(range[i] + " ")
+    
+    escreva("]")
