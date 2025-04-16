@@ -1,1 +1,22 @@
+Algoritmo main():
+
+  int[] array1 -> criar novo arranjo que recebe numeros inteiros {7, 4, 8, 1, 4, 1, 4}
+  float[] array2 -> criar novo arranjo do tipo float com o tamanho da array1
+  
+  Escreva("array1: [ ")
+  
+  para i até tamanho da array1 faça:
+    Escreva(array1[i] + " ")
+  
+  Escreva("]")
+  
+  Escreva("array2: [ ")
+  
+  int count = 0 -> cria variavel count do tipo inteiro que recebe o valor 0
+  
+  Enquanto count for menor que tamanho da array1 e array1[count] for diferente que 1:
+    array2[count] é igual a o array1[count] do tipo float
+    Escreva(array2[count++] + " ") -> escreve a valor de array[count] + 1
+  
+  Escreva("]")
 
