@@ -1,0 +1,24 @@
+public static void main(String[] args) {
+  Se (args.length<3) retorne; -> se args tive o tamanho menor que 3
+  double p = Double.parseDouble (args[0]) -> transforma args[0] em double e armazena em p
+  double p2 = Double.parseDouble (args[1]) -> transforma args[1] em double e armazena em p2
+  int m = Integer.parseInt (args[2])  -> transforma args[2] em int e armazena em m
+  
+  BinomialDistribution dist = new BinomialDistribution(COIN_TOSSES, p) -> cria um objeto de um classe com parametros armazenado no dist
+
+  DataList data = new DataList(); -> cria um objeto DataList da classe DataList que é armazenado no data
+
+  Para i de i até m faça:
+      data.insert(dist.experiment () ) -> inserir no data o que o metodo do objeto dist retorna
+  
+
+  BinomialDistribution dist2 = new BinomialDistribution(COIN_TOSSES, P2) -> -> cria um objeto de um classe com parametros armazenado no dist2
+
+  DataList data2 = new DataList() -> cria um objeto DataList da classe DataList que é armazenado no data2
+
+  Para i de i até m faça:
+      data2.insert(dist2.experiment () ) -> inserir no data o que o metodo do objeto dist retorna
+}
+
+
+
