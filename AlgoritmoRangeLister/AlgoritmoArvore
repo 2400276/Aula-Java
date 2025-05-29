@@ -1,1 +1,226 @@
+Algoritmo Tree:
+  private No root  // raiz da árvore
 
+  public Tree():
+    root <- null
+
+  public void inserir(long v):
+    No novo <- novo No()
+    novo.item <- v
+    novo.dir <- null
+    novo.esq <- null
+
+    se root == null então
+      root <- novo
+    senão:
+      No atual <- root
+      No anterior
+
+      enquanto true faça:
+        anterior <- atual
+        se v <= atual.item então
+          atual <- atual.esq
+          se atual == null então
+            anterior.esq <- novo
+            retorne
+          fim se
+        senão:
+          atual <- atual.dir
+          se atual == null então
+            anterior.dir <- novo
+            retorne
+          fim se
+        fim se
+      fim enquanto
+    fim se
+  fim método
+
+  public No buscar(long chave):
+    se root == null então
+      retorne null
+    fim se
+    No atual <- root
+
+    enquanto atual.item != chave faça:
+      se chave < atual.item então
+        atual <- atual.esq
+      senão
+        atual <- atual.dir
+      fim se
+      se atual == null então
+        retorne null
+      fim se
+    fim enquanto
+
+    retorne atual
+  fim método
+
+  public boolean remover(long v):
+    se root == null então
+      retorne false
+    fim se
+
+    No atual <- root
+    No pai <- root
+    boolean filho_esq <- true
+
+    // Buscando o valor
+    enquanto atual.item != v faça:
+      pai <- atual
+      se v < atual.item então
+        atual <- atual.esq
+        filho_esq <- true
+      senão
+        atual <- atual.dir
+        filho_esq <- false
+      fim se
+      se atual == null então
+        retorne false
+      fim se
+    fim enquanto
+
+    // Remoção
+    se atual.esq == null e atual.dir == null então
+      se atual == root então
+        root <- null
+      senão se filho_esq então
+        pai.esq <- null
+      senão
+        pai.dir <- null
+      fim se
+
+    senão se atual.dir == null então
+      se atual == root então
+        root <- atual.esq
+      senão se filho_esq então
+        pai.esq <- atual.esq
+      senão
+        pai.dir <- atual.esq
+      fim se
+
+    senão se atual.esq == null então
+      se atual == root então
+        root <- atual.dir
+      senão se filho_esq então
+        pai.esq <- atual.dir
+      senão
+        pai.dir <- atual.dir
+      fim se
+
+    senão
+      No sucessor <- no_sucessor(atual)
+      se atual == root então
+        root <- sucessor
+      senão se filho_esq então
+        pai.esq <- sucessor
+      senão
+        pai.dir <- sucessor
+      fim se
+      sucessor.esq <- atual.esq
+    fim se
+
+    retorne true
+  fim método
+
+  public No no_sucessor(No apaga):
+    No paidosucessor <- apaga
+    No sucessor <- apaga
+    No atual <- apaga.dir
+
+    enquanto atual != null faça:
+      paidosucessor <- sucessor
+      sucessor <- atual
+      atual <- atual.esq
+    fim enquanto
+
+    se sucessor != apaga.dir então
+      paidosucessor.esq <- sucessor.dir
+      sucessor.dir <- apaga.dir
+    fim se
+
+    retorne sucessor
+  fim método
+
+  public void caminhar():
+    escreva "\n Exibindo em ordem: "
+    inOrder(root)
+    escreva "\n Exibindo em pos-ordem: "
+    posOrder(root)
+    escreva "\n Exibindo em pre-ordem: "
+    preOrder(root)
+  fim método
+
+  public void inOrder(No atual):
+    se atual != null então
+      inOrder(atual.esq)
+      escreva atual.item + " "
+      inOrder(atual.dir)
+    fim se
+  fim método
+
+  public void preOrder(No atual):
+    se atual != null então
+      escreva atual.item + " "
+      preOrder(atual.esq)
+      preOrder(atual.dir)
+    fim se
+  fim método
+
+  public void posOrder(No atual):
+    se atual != null então
+      posOrder(atual.esq)
+      posOrder(atual.dir)
+      escreva atual.item + " "
+    fim se
+  fim método
+
+
+Algoritmo main():
+  Scanner le <- novo Scanner(System.in)
+  Tree arv <- nova Tree()
+  int opcao
+  long x
+
+  escreva "\n Programa Arvore binaria de long"
+
+  faça:
+    escreva "\n***********************************"
+    escreva "\nEntre com a opcao:"
+    escreva "\n ----1: Inserir"
+    escreva "\n ----2: Excluir"
+    escreva "\n ----3: Pesquisar"
+    escreva "\n ----4: Exibir"
+    escreva "\n ----5: Sair do programa"
+    escreva "\n***********************************"
+    escreva "\n-> "
+    leia opcao
+
+    escolha opcao:
+      caso 1:
+        escreva "\n Informe o valor (long) -> "
+        leia x
+        arv.inserir(x)
+      caso 2:
+        escreva "\n Informe o valor (long) -> "
+        leia x
+        se arv.remover(x) == false então
+          escreva "\n Valor nao encontrado!"
+        fim se
+      caso 3:
+        escreva "\n Informe o valor (long) -> "
+        leia x
+        se arv.buscar(x) != null então
+          escreva "\n Valor Encontrado"
+        senão
+          escreva "\n Valor nao encontrado!"
+        fim se
+      caso 4:
+        arv.caminhar()
+      caso 5:
+        escreva "\n Saindo do programa..."
+      outro caso:
+        escreva "\n Opcao invalida!"
+    fim escolha
+
+  enquanto opcao != 5
+fim algoritmo
